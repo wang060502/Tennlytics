@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 网球教练助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f2f2f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .ios-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-radius: 22px;
+            box-shadow: 0 8px 24px 0 rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center bg-[#f2f2f7]">
+    <div class="w-full max-w-xs mx-auto">
+        <div class="flex flex-col items-center mb-8">
+            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100&h=100&fit=crop" class="w-20 h-20 rounded-full shadow mb-3 border-4 border-white" alt="logo">
+            <h1 class="text-2xl font-bold text-gray-800 tracking-tight">网球教练助手</h1>
+            <p class="text-gray-400 text-sm mt-1">欢迎注册</p>
+        </div>
+        <form class="ios-card p-7 mb-5">
+            <div class="mb-5">
+                <label class="block text-gray-700 text-sm mb-2" for="phone">手机号</label>
+                <input id="phone" type="text" placeholder="请输入手机号"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base transition">
+            </div>
+            <div class="mb-5">
+                <label class="block text-gray-700 text-sm mb-2" for="password">设置密码</label>
+                <input id="password" type="password" placeholder="请输入密码"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base transition">
+            </div>
+            <div class="mb-5">
+                <label class="block text-gray-700 text-sm mb-2" for="confirm">确认密码</label>
+                <input id="confirm" type="password" placeholder="请再次输入密码"
+                    class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base transition">
+            </div>
+            <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-xl font-semibold text-base shadow mb-2 transition">
+                注册
+            </button>
+            <a href="login.html" class="block text-center text-blue-500 text-sm mt-2">已有账号？登录</a>
+        </form>
+        <div class="text-center text-gray-400 my-4 text-sm">或</div>
+        <button class="w-full flex items-center justify-center bg-white border border-green-400 text-green-600 py-3 rounded-xl font-semibold text-base shadow hover:bg-green-50 transition">
+            <i class="fab fa-weixin text-2xl mr-2"></i> 微信一键注册
+        </button>
+    </div>
+</body>
+</html>

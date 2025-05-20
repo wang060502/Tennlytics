@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队课程日历 - 网球教练助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f2f2f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .ios-card {
+            background: rgba(255,255,255,0.95); /* 更强的背景模糊 */
+            backdrop-filter: blur(12px); /* 更强的模糊效果 */
+            border-radius: 22px; /* 更大的圆角 */
+            box-shadow: 0 8px 24px 0 rgba(0,0,0,0.08); /* 更柔和的阴影 */
+        }
+        /* 模拟不同教练的颜色 */
+        .coach-color-blue { background-color: #eef2ff; color: #4f46e5; } /* 更淡的蓝色 */
+        .coach-color-green { background-color: #dcfce7; color: #22c55e; } /* 更淡的绿色 */
+        .coach-color-purple { background-color: #ede9fe; color: #a78bfa; } /* 更淡的紫色 */
+        .conflict { border: 2px solid #ef4444; } /* 冲突提示，使用 Tailwind 红色 */
+        .select-ios {
+            appearance: none; /* 移除原生外观 */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-4 h-4 text-gray-400"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            padding-right: 2rem; /* 为箭头留空间 */
+        }
+         .segment-control {
+             display: inline-flex;
+             border-radius: 9999px; /* 全圆角 */
+             background-color: #e5e7eb; /* 浅灰色背景 */
+             padding: 2px;
+         }
+         .segment-control button {
+             padding: 0.3rem 1rem; /* 内边距 */
+             border-radius: 9999px; /* 全圆角 */
+             font-weight: 500;
+             transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+         }
+         .segment-control button.active {
+             background-color: #ffffff;
+             color: #3b82f6; /* 蓝色 */
+             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* 浅阴影 */
+         }
+    </style>
+</head>
+<body class="min-h-screen p-4 bg-[#f2f2f7]">
+    <!-- 顶部导航 -->
+    <div class="flex items-center mb-6">
+        <a href="index.html" class="mr-4 text-gray-600">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <h1 class="text-2xl font-semibold text-gray-800 tracking-tight">团队课程日历</h1>
+    </div>
+
+    <!-- 筛选和日期切换 -->
+    <div class="ios-card p-5 mb-6">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-medium text-gray-800">2024年3月18日</h2>
+            <div class="flex space-x-2">
+                <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <button class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+        </div>
+        <div class="flex space-x-3 text-sm mb-4">
+             <select class="flex-1 bg-gray-100 rounded-lg px-3 py-2 text-gray-700 select-ios focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option>所有教练</option>
+                <option>王教练</option>
+                <option>李教练</option>
+            </select>
+            <select class="flex-1 bg-gray-100 rounded-lg px-3 py-2 text-gray-700 select-ios focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option>所有场地</option>
+                <option>场地1</option>
+                <option>场地2</option>
+            </select>
+             <select class="flex-1 bg-gray-100 rounded-lg px-3 py-2 text-gray-700 select-ios focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option>所有课程</option>
+                <option>初级课</option>
+                <option>进阶课</option>
+            </select>
+        </div>
+        <!-- 视图切换 -->
+         <div class="flex justify-center">
+             <div class="segment-control">
+                 <button class="active">日</button>
+                 <button>周</button>
+                 <button>月</button>
+             </div>
+         </div>
+    </div>
+
+    <!-- 日历/课程列表模拟 (简略展示一天) -->
+    <div class="mb-20"> <!-- 增加底部外边距，为底部导航留空间 -->
+        <h2 class="text-lg font-medium text-gray-800 mb-4">课程详情</h2>
+        <div class="space-y-4"> <!-- 增加卡片间距 -->
+            <!-- 课程卡片 (模拟不同教练颜色和冲突) -->
+            <div class="ios-card p-4 flex items-center justify-between coach-color-blue hover:shadow-lg transition">
+                <div>
+                    <div class="font-medium text-base">10:00-11:00 · 初级课</div>
+                    <div class="text-sm text-gray-600">王教练 · 张三 · 场地1</div>
+                </div>
+                 <i class="fas fa-chevron-right text-blue-700"></i>
+            </div>
+             <div class="ios-card p-4 flex items-center justify-between coach-color-green conflict hover:shadow-lg transition">
+                <div>
+                    <div class="font-medium text-base">11:00-12:00 · 进阶课</div>
+                    <div class="text-sm text-gray-600">李教练 · 李四 · 场地2</div>
+                </div>
+                 <i class="fas fa-exclamation-circle text-red-600 text-lg ml-2"></i> <!-- 冲突图标增大 -->
+                 <i class="fas fa-chevron-right text-green-700"></i>
+            </div>
+             <div class="ios-card p-4 flex items-center justify-between coach-color-blue hover:shadow-lg transition">
+                <div>
+                    <div class="font-medium text-base">11:30-12:30 · 私教课</div>
+                    <div class="text-sm text-gray-600">王教练 · 王五 · 场地1</div>
+                </div>
+                 <i class="fas fa-chevron-right text-blue-700"></i>
+            </div>
+             <div class="ios-card p-4 flex items-center justify-between coach-color-purple hover:shadow-lg transition">
+                <div>
+                    <div class="font-medium text-base">14:00-15:00 · 体验课</div>
+                    <div class="text-sm text-gray-600">赵教练 · 赵六 · 场地3</div>
+                </div>
+                 <i class="fas fa-chevron-right text-purple-700"></i>
+            </div>
+            <!-- 更多课程... -->
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex justify-around items-center">
+        <a href="index.html" class="text-gray-400">
+            <i class="fas fa-home text-xl"></i>
+        </a>
+        <a href="courses.html" class="text-blue-500">
+            <i class="fas fa-calendar text-xl"></i>
+        </a>
+        <a href="income.html" class="text-gray-400">
+            <i class="fas fa-chart-bar text-xl"></i>
+        </a>
+        <a href="profile.html" class="text-gray-400">
+            <i class="fas fa-user text-xl"></i>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教练管理 - 网球教练助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f2f2f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .ios-card {
+            background: rgba(255,255,255,0.95); /* 更强的背景模糊 */
+            backdrop-filter: blur(12px); /* 更强的模糊效果 */
+            border-radius: 22px; /* 更大的圆角 */
+            box-shadow: 0 8px 24px 0 rgba(0,0,0,0.08); /* 更柔和的阴影 */
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 bg-[#f2f2f7]">
+    <!-- 顶部导航 -->
+    <div class="flex items-center mb-6">
+        <a href="index.html" class="mr-4 text-gray-600">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <h1 class="text-2xl font-semibold text-gray-800 tracking-tight">教练管理</h1>
+    </div>
+
+    <!-- 搜索栏 -->
+    <div class="ios-card p-4 mb-6">
+        <div class="relative">
+            <input type="text" placeholder="搜索教练..."
+                   class="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base transition">
+            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+    </div>
+
+    <!-- 教练列表 -->
+    <div class="space-y-4 mb-20"> <!-- 增加底部外边距 -->
+
+        <!-- 教练卡片 1 -->
+        <div class="ios-card p-4 flex items-center justify-between hover:shadow-lg transition">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+                     alt="教练头像"
+                     class="w-12 h-12 rounded-full object-cover shadow-sm border border-gray-200">
+                <div class="ml-4">
+                    <h3 class="font-medium text-gray-800 text-base">李教练</h3>
+                    <p class="text-sm text-gray-500">进阶教练 · 累计课时 850h</p>
+                </div>
+            </div>
+            <a href="#" class="text-gray-400 hover:text-gray-600 transition">
+                 <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+        <!-- 教练卡片 2 -->
+        <div class="ios-card p-4 flex items-center justify-between hover:shadow-lg transition">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+                     alt="教练头像"
+                     class="w-12 h-12 rounded-full object-cover shadow-sm border border-gray-200">
+                <div class="ml-4">
+                    <h3 class="font-medium text-gray-800 text-base">张教练</h3>
+                    <p class="text-sm text-gray-500">初级教练 · 累计课时 320h</p>
+                </div>
+            </div>
+            <a href="#" class="text-gray-400 hover:text-gray-600 transition">
+                 <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+         <!-- 教练卡片 3 -->
+        <div class="ios-card p-4 flex items-center justify-between hover:shadow-lg transition">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=100&h=100&fit=crop"
+                     alt="教练头像"
+                     class="w-12 h-12 rounded-full object-cover shadow-sm border border-gray-200">
+                <div class="ml-4">
+                    <h3 class="font-medium text-gray-800 text-base">赵教练</h3>
+                    <p class="text-sm text-gray-500">中级教练 · 累计课时 610h</p>
+                </div>
+            </div>
+             <a href="#" class="text-gray-400 hover:text-gray-600 transition">
+                 <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- 添加教练按钮 -->
+    <button class="fixed bottom-20 right-4 w-14 h-14 bg-blue-500 hover:bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg transition">
+        <i class="fas fa-plus text-xl"></i>
+    </button>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex justify-around items-center">
+        <a href="index.html" class="text-blue-500">
+            <i class="fas fa-home text-xl"></i>
+        </a>
+        <a href="courses.html" class="text-gray-400">
+            <i class="fas fa-calendar text-xl"></i>
+        </a>
+        <a href="income.html" class="text-gray-400">
+            <i class="fas fa-chart-bar text-xl"></i>
+        </a>
+        <a href="profile.html" class="text-gray-400">
+            <i class="fas fa-user text-xl"></i>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>场地状态看板 - 网球教练助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f2f2f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+         .ios-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .time-slot {
+            min-width: 60px; /* 给时间列一个最小宽度 */
+        }
+        .venue-cell {
+            height: 40px; /* 每小时格子高度 */
+            border: 1px solid #e5e7eb; /* 浅灰色边框 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem; /* 文字小一点 */
+            cursor: pointer;
+            position: relative; /* 用于红点 */
+        }
+        .free {
+            background-color: #dcfce7; /* 淡绿色 */
+            color: #16a34a;
+        }
+        .occupied {
+            background-color: #fee2e2; /* 淡红色 */
+            color: #dc2626;
+            font-weight: bold;
+        }
+         .partially-occupied {
+            background-color: #fef9c3; /* 淡黄色 */
+            color: #eab308;
+         }
+        .red-dot {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 8px;
+            height: 8px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4">
+    <!-- 顶部导航 -->
+    <div class="flex items-center mb-6">
+        <a href="index.html" class="mr-4">
+            <i class="fas fa-chevron-left text-gray-600"></i>
+        </a>
+        <h1 class="text-2xl font-semibold text-gray-800">场地状态看板</h1>
+    </div>
+
+    <!-- 日期选择 -->
+    <div class="ios-card p-4 mb-6 flex justify-between items-center">
+        <h2 class="text-lg font-medium text-gray-800">2024年3月18日</h2>
+        <div class="flex space-x-2">
+            <button class="p-2 rounded-full bg-gray-100">
+                <i class="fas fa-chevron-left text-gray-600"></i>
+            </button>
+            <button class="p-2 rounded-full bg-gray-100">
+                <i class="fas fa-chevron-right text-gray-600"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 场地看板 -->
+    <div class="ios-card p-4 mb-6 overflow-x-auto">
+        <table class="w-full table-fixed">
+            <thead>
+                <tr class="text-gray-600 text-sm border-b border-gray-200">
+                    <th class="time-slot text-left py-2">时间</th>
+                    <th class="text-center py-2">场地1 <i class="fas fa-circle text-red-500 text-xs ml-1"></i></th> <!-- 场地占用警示红点 -->
+                    <th class="text-center py-2">场地2</th>
+                    <th class="text-center py-2">场地3 <i class="fas fa-circle text-orange-400 text-xs ml-1"></i></th> <!-- 场地临时调整警示点 -->
+                    <th class="text-center py-2">场地4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 模拟每小时的格子 -->
+                <tr>
+                    <td class="time-slot text-gray-800 text-sm py-2 border-r border-gray-200">09:00</td>
+                    <td class="venue-cell occupied">王教练</td>
+                    <td class="venue-cell free">空闲</td>
+                    <td class="venue-cell free">空闲</td>
+                    <td class="venue-cell free">空闲</td>
+                </tr>
+                <tr>
+                    <td class="time-slot text-gray-800 text-sm py-2 border-r border-gray-200">10:00</td>
+                    <td class="venue-cell occupied">王教练</td>
+                    <td class="venue-cell occupied">李教练</td>
+                    <td class="venue-cell occupied">李教练</td>
+                    <td class="venue-cell free">空闲</td>
+                </tr>
+                 <tr>
+                    <td class="time-slot text-gray-800 text-sm py-2 border-r border-gray-200">11:00</td>
+                    <td class="venue-cell occupied">王教练</td>
+                    <td class="venue-cell occupied">李教练</td>
+                    <td class="venue-cell partially-occupied">临时调整</td>
+                    <td class="venue-cell free">空闲</td>
+                </tr>
+                <!-- 更多时间段... -->
+                 <tr>
+                    <td class="time-slot text-gray-800 text-sm py-2 border-r border-gray-200">14:00</td>
+                    <td class="venue-cell free">空闲</td>
+                    <td class="venue-cell occupied">赵教练</td>
+                    <td class="venue-cell free">空闲</td>
+                    <td class="venue-cell free">空闲</td>
+                </tr>
+                <!-- 比如一直到 22:00 -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex justify-around items-center">
+        <a href="index.html" class="text-gray-400">
+            <i class="fas fa-home text-xl"></i>
+        </a>
+        <a href="courses.html" class="text-blue-500">
+            <i class="fas fa-calendar text-xl"></i>
+        </a>
+        <a href="income.html" class="text-gray-400">
+            <i class="fas fa-chart-bar text-xl"></i>
+        </a>
+        <a href="profile.html" class="text-gray-400">
+            <i class="fas fa-user text-xl"></i>
+        </a>
+    </div>
+
+     <script>
+         // 模拟点击格子查看详情
+         document.querySelectorAll('.venue-cell').forEach(cell => {
+             cell.addEventListener('click', function() {
+                 const status = this.innerText;
+                 if (status !== '空闲' && status !== '临时调整') {
+                     alert('查看占用详情：\n教练：' + status + '\n学员：[模拟学员]\n课程类型：[模拟类型]');
+                 } else if (status === '临时调整') {
+                     alert('场地临时调整，详情请联系管理员');
+                 }
+             });
+             // 模拟长按预约空闲场地
+             cell.addEventListener('contextmenu', function(e) {
+                  e.preventDefault(); // 阻止默认右键菜单
+                 if (this.innerText === '空闲') {
+                     alert('长按模拟：快速预约场地\n时段：[当前时段]\n场地：[当前场地]');
+                     // 这里可以跳转到预约页面并带上时间和场地信息
+                 }
+             });
+         });
+     </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "tennis-coach-assistant",
+  "version": "1.0.0",
+  "description": "网球教练课程统计与收入管理H5应用",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35"
+  }
+} 
